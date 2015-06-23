@@ -28,7 +28,7 @@ public class MysqlPool {
         } catch (SQLException e) {  
             throw new RuntimeException("无法从数据源获取连接 ", e);  
         }  
-    }  
+    }
   
     public static void main(String[] args) throws SQLException {  
         Connection con = null;  

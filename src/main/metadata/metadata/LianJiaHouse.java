@@ -9,9 +9,25 @@ public class LianJiaHouse {
 	private String houseDirection;
 	private String housePrice;
 	private String pricePerSquare;
+	private String houseURL;
+	private String regionURL;
 	private boolean isDown;
 	
 	
+	
+	
+	public String getHouseURL() {
+		return houseURL;
+	}
+	public void setHouseURL(String houseURL) {
+		this.houseURL = houseURL;
+	}
+	public String getRegionURL() {
+		return regionURL;
+	}
+	public void setRegionURL(String regionURL) {
+		this.regionURL = regionURL;
+	}
 	public boolean isDown() {
 		return isDown;
 	}
@@ -25,7 +41,7 @@ public class LianJiaHouse {
 		this.housePrice = housePrice;
 	}
 	public String getPricePerSquare() {
-		return pricePerSquare;
+		return pricePerSquare.replace(" 元/m²", "");
 	}
 	public void setPricePerSquare(String pricePerSquare) {
 		this.pricePerSquare = pricePerSquare;
@@ -55,7 +71,7 @@ public class LianJiaHouse {
 		this.houseRoom = houseRoom;
 	}
 	public String getHouseArea() {
-		return houseArea;
+		return houseArea.replace("平米", "");
 	}
 	public void setHouseArea(String houseArea) {
 		this.houseArea = houseArea;

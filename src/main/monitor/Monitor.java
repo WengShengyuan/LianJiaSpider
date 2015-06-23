@@ -11,6 +11,7 @@ import main.metadata.parser.LianJiaURLParser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import util.database.LianJiaDataHelper;
 import util.net.NetUtils;
 
 public class Monitor {
@@ -23,9 +24,10 @@ public class Monitor {
 		locations.add("xierqi");
 		locations.add("shangdi");
 		locations.add("fangshan");
+		LianJiaDataHelper dh = new LianJiaDataHelper();
 		
 		List<String> directions = new ArrayList<String>();
-		directions.add(LianJiaParams.roomDirectionKey_SN);
+//		directions.add(LianJiaParams.roomDirectionKey_SN);
 
 		List<String> URLS = LianJiaURLParser.genURL(locations, 0, 450, -1,
 				-1, LianJiaParams.roomCountKey_THREE, null, directions, true,
@@ -44,9 +46,12 @@ public class Monitor {
 			Document doc = Jsoup.parse(content);
 			List<LianJiaHouse> list = LianJiaDocParser.getHouseList(doc);
 			for(LianJiaHouse house : list){
-				String s = house.getHouseTitle() + "\t" + house.getHouseLocation() + "\t" + house.getHousePrice() +"\t" + house.getPricePerSquare() + "\t降价:" + house.isDown();
+				String s = house.getHouseTitle() + "\t" + house.getHouseLocation() + "\t" + house.getHousePrice() + "\t" + house.getPricePerSquare() + "\t" + house.getHouseURL() + "\t" + "\t降价:" + house.isDown();
 				System.out.println(s);
 			}
+			
+			dh.batchSaveHouse(list);
+			
 			System.out.println("");
 		}
 

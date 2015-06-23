@@ -64,8 +64,8 @@ public class LianJiaURLParser {
 		
 		
 
-		if(!(locations == null) || (locations.size()==0)){
-			if(!(roomDirections == null) || (roomDirections.size() ==0)){
+		if(!(locations == null) && (locations.size()>0)){
+			if(!(roomDirections == null) && (roomDirections.size() >0)){
 				for(String location : locations){
 					for(String direction : roomDirections){
 						StringBuilder ub = new StringBuilder(prefixURL);
@@ -84,7 +84,7 @@ public class LianJiaURLParser {
 				}
 			}
 		} else {
-			if(!(roomDirections == null) || (roomDirections.size() ==0)){
+			if(!(roomDirections == null) && (roomDirections.size()>0)){
 					for(String direction : roomDirections){
 						StringBuilder ub = new StringBuilder(prefixURL);
 						ub.append(LianJiaParams.roomDirectionMap.get(direction))

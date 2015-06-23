@@ -36,6 +36,8 @@ public class LianJiaDocParser {
 			if(houseId == null || houseId.isEmpty())
 				continue;
 			String houseTitle = li.select("div.info-panel > h2 > a").attr("title");
+			String houseURL = LianJiaParams.BaseURL + li.select("div.info-panel > h2 > a").attr("href");
+			String regionURL = LianJiaParams.BaseURL + li.select("div.info-panel > div.col-1 > div.where > a").attr("href");
 			String houseLocation = li.select("div.info-panel > div.col-1 > div.where > a > span").text();
 			String houseRoom = li.select("div.info-panel > div.col-1 > div.where > span.zone > span").text();
 			String houseArea = li.select("div.info-panel > div.col-1 > div.where > span.meters").text();
@@ -56,6 +58,8 @@ public class LianJiaDocParser {
 			house.setHousePrice(housePrice);
 			house.setPricePerSquare(pricePerSquare);
 			house.setDown(isDown);
+			house.setHouseURL(houseURL);
+			house.setRegionURL(regionURL);
 			list.add(house);
 		}
 		
