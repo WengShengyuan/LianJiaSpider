@@ -47,6 +47,14 @@ public class LianJiaDocParser {
 			String housePrice = li.select("div.info-panel > div.col-3 > div.price > span.num").text();
 			String pricePerSquare = li.select("div.info-panel > div.col-3 > div.price-pre").text();
 			Elements img = li.select("div.info-panel > div.col-3 > div.price > img");
+			
+			String[] otherInfos = li.select("div.info-panel > div.col-1 > div.other > div.con").text().split("/");
+			String houseType = otherInfos[0];
+			String houseHeight = otherInfos[1];
+			String[] houseOtherStrs = otherInfos[2].split("年建");
+			String houseBuildYear = houseOtherStrs[0];
+			String houseBuildType = houseOtherStrs[1];
+			
 			boolean isDown = img.size() >0;
 			
 			house.setHouseId(houseId);
@@ -60,6 +68,10 @@ public class LianJiaDocParser {
 			house.setDown(isDown);
 			house.setHouseURL(houseURL);
 			house.setRegionURL(regionURL);
+			house.setHouseType(houseType);
+			house.setHouseHeight(houseHeight);
+			house.setHouseBuildType(houseBuildType);
+			house.setHouseBuildYear(houseBuildYear);
 			list.add(house);
 		}
 		

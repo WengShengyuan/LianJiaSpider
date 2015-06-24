@@ -21,25 +21,31 @@ public class LianJiaDataHelper {
 	static String regionURLCol = "region_url";
 	static String isDownCol = "is_down";
 	static String createDateCol = "create_date";
+	static String houseTypeCol = "house_type";
+	static String houseHeightCol = "house_height";
+	static String houseBuildYearCol = "house_build_year";
+	static String houseBuildTypeCol = "house_build_type";
 
 	Connection con = null;
 
 	public boolean saveHouse(LianJiaHouse house) throws Exception {
 
 		String insertSql = String
-				.format("INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s')",
+				.format("INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s', '%s', '%s','%s')",
 						tableName, 
 						houseIdCol, houseTitleCol, houseLocationCol,
 						houseRoomCol, houseAreaCol, houseDirectionCol,
 						housePriceCol, pricePerSquareCol, houseURLCol,
-						regionURLCol, isDownCol, createDateCol, 
+						regionURLCol, isDownCol, createDateCol, houseTypeCol,
+						houseHeightCol,houseBuildYearCol,houseBuildTypeCol,
 						house.getHouseId(),
 						house.getHouseTitle(), house.getHouseLocation(),
 						house.getHouseRoom(), house.getHouseArea(),
 						house.getHouseDirection(), house.getHousePrice(),
 						house.getPricePerSquare(), house.getHouseURL(),
 						house.getRegionURL(), (house.isDown() ? 1 : 0),
-						(new Date()).toString());
+						(new Date()).toString(), house.getHouseType(), house.getHouseHeight(),
+						house.getHouseBuildYear(), house.getHouseBuildType());
 						
 		try {
 			con = MysqlPool.getInstance().getConnection();
@@ -65,19 +71,21 @@ public class LianJiaDataHelper {
 		
 			for(LianJiaHouse house : houses){
 				String insertSql = String
-						.format("INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s')",
+						.format("INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s', '%s', '%s','%s')",
 								tableName, 
 								houseIdCol, houseTitleCol, houseLocationCol,
 								houseRoomCol, houseAreaCol, houseDirectionCol,
 								housePriceCol, pricePerSquareCol, houseURLCol,
-								regionURLCol, isDownCol, createDateCol, 
+								regionURLCol, isDownCol, createDateCol, houseTypeCol,
+								houseHeightCol,houseBuildYearCol,houseBuildTypeCol,
 								house.getHouseId(),
 								house.getHouseTitle(), house.getHouseLocation(),
 								house.getHouseRoom(), house.getHouseArea(),
 								house.getHouseDirection(), house.getHousePrice(),
 								house.getPricePerSquare(), house.getHouseURL(),
 								house.getRegionURL(), (house.isDown() ? 1 : 0),
-								(new Date()).toString());
+								(new Date()).toString(), house.getHouseType(), house.getHouseHeight(),
+								house.getHouseBuildYear(), house.getHouseBuildType());
 				try{
 					con.createStatement().execute(insertSql);
 				} catch (Exception e) {
@@ -97,7 +105,7 @@ public class LianJiaDataHelper {
 
 	public boolean createTable() throws Exception {
 		String dropTable = "DROP TABLE IF EXISTS `lianjia_table`";
-		String createTable = "CREATE TABLE `lianjia_table` (  `id` bigint(20) NOT NULL AUTO_INCREMENT,  `house_id` text,  `house_title` text,  `house_location` text,  `house_room` text,  `house_area` text,  `house_direction` text,  `house_price` text,  `price_per_square` text,  `house_url` longtext,  `region_url` longtext,  `is_down` tinyint(2) DEFAULT NULL,  `create_date` text,  PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
+		String createTable = "CREATE TABLE `lianjia_table` (  `id` bigint(20) NOT NULL AUTO_INCREMENT,  `house_id` text,  `house_title` text,  `house_location` text,  `house_room` text,  `house_area` text,  `house_direction` text,  `house_price` text,  `price_per_square` text,  `house_url` longtext,  `region_url` longtext,  `is_down` tinyint(2) DEFAULT NULL,  `create_date` text,  `house_type` text,  `house_height` text,  `house_build_year` text,  `house_build_type` text,  PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
 		
 		try {
 			con = MysqlPool.getInstance().getConnection();

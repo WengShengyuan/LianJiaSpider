@@ -12,10 +12,39 @@ public class LianJiaHouse {
 	private String houseURL;
 	private String regionURL;
 	private boolean isDown;
+	private String houseType;
+	private String houseHeight;
+	private String houseBuildYear;
+	private String houseBuildType;
 	
 	
 	
 	
+	
+	public String getHouseType() {
+		return houseType;
+	}
+	public void setHouseType(String houseType) {
+		this.houseType = houseType;
+	}
+	public String getHouseHeight() {
+		return houseHeight;
+	}
+	public void setHouseHeight(String houseHeight) {
+		this.houseHeight = houseHeight;
+	}
+	public String getHouseBuildYear() {
+		return houseBuildYear;
+	}
+	public void setHouseBuildYear(String houseBuildYear) {
+		this.houseBuildYear = houseBuildYear;
+	}
+	public String getHouseBuildType() {
+		return houseBuildType;
+	}
+	public void setHouseBuildType(String houseBuildType) {
+		this.houseBuildType = houseBuildType;
+	}
 	public String getHouseURL() {
 		return houseURL;
 	}
