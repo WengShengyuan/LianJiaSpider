@@ -20,10 +20,8 @@ public class Monitor {
 		
 
 		List<String> locations = new ArrayList<String>();
-		locations.add("wangjing");
-		locations.add("xierqi");
-		locations.add("shangdi");
-		locations.add("fangshan");
+		locations.add("chaoyang");
+		locations.add("haidian");
 		LianJiaDataHelper dh = new LianJiaDataHelper();
 		
 		List<String> directions = new ArrayList<String>();
@@ -46,7 +44,7 @@ public class Monitor {
 			Document doc = Jsoup.parse(content);
 			List<LianJiaHouse> list = LianJiaDocParser.getHouseList(doc);
 			for(LianJiaHouse house : list){
-				String s = house.getHouseTitle() + "\t" + house.getHouseLocation() + "\t" + house.getHousePrice() + "\t" + house.getPricePerSquare() + "\t" + house.getHouseURL() + "\t" + "\t降价:" + house.isDown();
+				String s = house.getHouseTitle() + "\t" + house.getHouseLocation() + "\t" + house.getHousePrice() + "\t" + house.getPricePerSquare() + "\t" + "\t降价:" + house.isDown();
 				System.out.println(s);
 			}
 			

@@ -83,7 +83,7 @@ public class LianJiaDataHelper {
 				} catch (Exception e) {
 					e.printStackTrace();
 					continue;
-				} 
+				}
 			}
 			
 			if(con != null){
