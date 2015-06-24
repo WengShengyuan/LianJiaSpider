@@ -22,6 +22,8 @@ public class Monitor {
 		List<String> locations = new ArrayList<String>();
 		locations.add("chaoyang");
 		locations.add("haidian");
+		locations.add("fengtai");
+		locations.add("shijingshan");
 		LianJiaDataHelper dh = new LianJiaDataHelper();
 		
 		List<String> directions = new ArrayList<String>();
@@ -37,23 +39,26 @@ public class Monitor {
 		
 		while(URLPool.getInstance().hasNext()){
 			String URL = URLPool.getInstance().popURL();
-			System.out.println("--------------URL------------------------------");
-			System.out.println(URL);
-			System.out.println("--------------HouseList--------------------------");
-			String content = NetUtils.httpGet(URL);
-			Document doc = Jsoup.parse(content);
-			List<LianJiaHouse> list = LianJiaDocParser.getHouseList(doc);
-			for(LianJiaHouse house : list){
-				String s = house.getHouseTitle() + "\t" + house.getHouseLocation() + "\t" + house.getHousePrice() + "\t" + house.getPricePerSquare() + "\t" + "\t降价:" + house.isDown();
-				System.out.println(s);
+			try{
+				System.out.println("--------------URL------------------------------");
+				System.out.println(URL);
+				System.out.println("--------------HouseList--------------------------");
+				String content = NetUtils.httpGet(URL);
+				Document doc = Jsoup.parse(content);
+				List<LianJiaHouse> list = LianJiaDocParser.getHouseList(doc);
+				for(LianJiaHouse house : list){
+					String s = house.getHouseTitle() + "\t" + house.getHouseLocation() + "\t" + house.getHousePrice() + "\t" + house.getPricePerSquare() + "\t" + "\t降价:" + house.isDown();
+					System.out.println(s);
+				}
+				
+				dh.batchSaveHouse(list);
+				
+				System.out.println("");
+			} catch(Exception e){
+				URLPool.getInstance().pushURL(URL);
+				e.printStackTrace();
 			}
-			
-			dh.batchSaveHouse(list);
-			
-			System.out.println("");
 		}
-
-		
 
 	}
 
