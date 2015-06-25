@@ -4,7 +4,7 @@
 
 MySQL配置：root     123456 字符集：UTF-8
 
-表名：lianjia_test
+表名：lianjia_table
 
 建表：
 
