@@ -2,7 +2,7 @@
 链家地产房产信息收集程序-个人使用
 
 
-MySQL配置：jdbc:mysql://localhost:3306/defaultdatabase?characterEncoding=utf-8    root     123456
+MySQL配置：root     123456 字符集：UTF-8
 
 表名：lianjia_test
 
