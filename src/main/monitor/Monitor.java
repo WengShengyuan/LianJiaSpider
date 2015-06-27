@@ -30,8 +30,8 @@ public class Monitor {
 //		directions.add(LianJiaParams.roomDirectionKey_SN);
 
 		List<String> URLS = LianJiaURLParser.genURL(locations, 0, 450, -1,
-				-1, LianJiaParams.roomCountKey_THREE, null, directions, true,
-				true, false);
+				-1, LianJiaParams.roomCountKey_THREE, null, directions, false,
+				false, false);
 		
 		URLPool.getInstance().batchPush(URLS);
 		
@@ -53,7 +53,9 @@ public class Monitor {
 				
 				dh.batchSaveHouse(list);
 				
-				System.out.println("");
+				System.out.println("\t抓取結束");
+				
+				
 			} catch(Exception e){
 				URLPool.getInstance().pushURL(URL);
 				e.printStackTrace();

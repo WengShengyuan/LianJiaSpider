@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.Date;
 import java.util.List;
 
+import util.DateUtils;
 import main.metadata.metadata.LianJiaHouse;
 
 public class LianJiaDataHelper {
@@ -44,7 +45,7 @@ public class LianJiaDataHelper {
 						house.getHouseDirection(), house.getHousePrice(),
 						house.getPricePerSquare(), house.getHouseURL(),
 						house.getRegionURL(), (house.isDown() ? 1 : 0),
-						(new Date()).toString(), house.getHouseType(), house.getHouseHeight(),
+						DateUtils.dateToString(new Date(), DateUtils.yyyyMMdd), house.getHouseType(), house.getHouseHeight(),
 						house.getHouseBuildYear(), house.getHouseBuildType());
 						
 		try {
@@ -84,7 +85,7 @@ public class LianJiaDataHelper {
 								house.getHouseDirection(), house.getHousePrice(),
 								house.getPricePerSquare(), house.getHouseURL(),
 								house.getRegionURL(), (house.isDown() ? 1 : 0),
-								(new Date()).toString(), house.getHouseType(), house.getHouseHeight(),
+								DateUtils.dateToString(new Date(), DateUtils.yyyyMMdd), house.getHouseType(), house.getHouseHeight(),
 								house.getHouseBuildYear(), house.getHouseBuildType());
 				try{
 					con.createStatement().execute(insertSql);
