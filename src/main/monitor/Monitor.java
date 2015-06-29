@@ -20,20 +20,28 @@ public class Monitor {
 		
 
 		List<String> locations = new ArrayList<String>();
-		locations.add("chaoyang");
-		locations.add("haidian");
-		locations.add("fengtai");
-		locations.add("shijingshan");
+//		locations.add("chaoyang");
+//		locations.add("haidian");
+//		locations.add("fengtai");
+//		locations.add("shijingshan");
 		LianJiaDataHelper dh = new LianJiaDataHelper();
 		
 		List<String> directions = new ArrayList<String>();
 //		directions.add(LianJiaParams.roomDirectionKey_SN);
 
-		List<String> URLS = LianJiaURLParser.genURL(locations, 0, 450, -1,
-				-1, LianJiaParams.roomCountKey_THREE, null, directions, false,
-				false, false);
+//		List<String> URLS = LianJiaURLParser.genURL(locations, 0, 500, -1,
+//				-1, LianJiaParams.roomCountKey_THREE, null, directions, false,
+//				false, false);
 		
-		URLPool.getInstance().batchPush(URLS);
+		URLPool.getInstance().batchPush(LianJiaURLParser.genURL(locations, 0, 500, -1,
+				-1, LianJiaParams.roomCountKey_THREE, null, directions, false,
+				false, false));
+		URLPool.getInstance().batchPush(LianJiaURLParser.genURL(locations, 0, 500, -1,
+				-1, LianJiaParams.roomCountKey_FOUR, null, directions, false,
+				false, false));
+		URLPool.getInstance().batchPush(LianJiaURLParser.genURL(locations, 0, 500, -1,
+				-1, LianJiaParams.roomCountKey_TWO, null, directions, false,
+				false, false));
 		
 		List<Document> docs = new ArrayList<Document>();
 		
